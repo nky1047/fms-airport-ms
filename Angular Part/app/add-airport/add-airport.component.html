@@ -1,0 +1,49 @@
+
+       <div>
+              <div class="container" style="width: 400px;">
+
+                     <form #eform="ngForm" novalidate>
+
+                            <div class="form-group" (ngSubmit)="addAirport()" novalidate>
+                                   <label for="airportName">Aiport Name</label>
+                                   <input [(ngModel)]="airport.airportName" minlength=4 type="text" class="form-control"
+                                          name=airportName id=airportName #airportName="ngModel" required>
+
+                                   <div *ngIf="airportName.invalid && (airportName.dirty || airportName.touched)"
+                                          class="alert alert-danger">
+
+                                          <div *ngIf="airportName.errors.pattern">characters</div>
+                                          <div *ngIf="airportName.errors.required">Airport Name is required</div>
+                                          <div *ngIf="airportName.errors.minlength">Name must be atleast 4 alphabets
+                                          </div>
+                                   </div>
+                            </div>
+                            <div>
+                                   <label for="airportCode">Airport Code</label>
+                                   <input [(ngModel)]="airport.airportCode" minlength=3 type="text" class="form-control"
+                                          name=airportCode id=airportCode #airportCode="ngModel" required>
+                                   <div *ngIf="airportCode.invalid && (airportCode.dirty || airportCode.touched)"
+                                          class="alert alert-danger">
+                                          <div *ngIf="airportCode.errors.required">Code is required</div>
+                                          <div *ngIf="airportCode.errors.minlength">AirportCode must be atleast 3 digits
+                                          </div>
+                                   </div>
+                            </div>
+
+                            <div>
+                                   <label for="airportLocation">Airport Location</label>
+                                   <input [(ngModel)]="airport.airportLocation" minlength=4 type="text"
+                                          class="form-control" name=airportLocation id=airportLocation
+                                          #airportLocation="ngModel" required>
+                                   <div *ngIf="airportLocation.invalid && (airportLocation.dirty || airportLocation.touched)"
+                                          class="alert alert-danger">
+                                          <div *ngIf="airportLocation.errors.required">author is required</div>
+                                          <div *ngIf="airportLocation.errors.minlength">author must be atleast 4
+                                                 alphabets</div>
+                                   </div>
+                            </div>
+                            <br>
+                            <button (click)="addAirport()" type="submit" class="btn btn-primary">Add Airport</button>
+                     </form>
+              </div>
+       </div>

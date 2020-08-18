@@ -1,0 +1,9 @@
+#body {
+    position: relative;
+    min-height: 150%;
+    min-height: 100vh;
+  }
+  #footer {
+    position: static;
+    right: 0;bottom:0;left:0;
+  }
