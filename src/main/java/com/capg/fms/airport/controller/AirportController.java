@@ -27,7 +27,7 @@ import com.capg.fms.airport.service.IAirportService;
 @CrossOrigin(value = "http://localhost:4200")
 public class AirportController {
 	
-	private static final Logger LOG = LoggerFactory.getLogger(AirportController.class);
+	private static final Logger Log = LoggerFactory.getLogger(AirportController.class);
 	
 	@Autowired
 	IAirportService service;
@@ -35,23 +35,27 @@ public class AirportController {
 	
 	@GetMapping("/all")
 	public List<Airport> getAllAirports(){
+		Log.info("Get All Airport Accessed");
 		return service.getAllAirports();
 	}
 
 	
 	@RequestMapping("/view/{airportCode}")
 	public ResponseEntity<?> getAirportByCode( @PathVariable("airportCode") String airportCode1) {
+		Log.info("View Airport By Code Accessed");
 		return service.getAirportByCode(airportCode1);
 	}
 	
 	@PostMapping("/add")
 	public ResponseEntity<Airport> addAirport( @RequestBody Airport airport) {
+		Log.info("Add Airport Accessed");
 		service.addAirport(airport);
 		return new ResponseEntity<Airport>(airport,HttpStatus.CREATED);
 	}
 
 	@DeleteMapping("/delete/{airportCode}")
 	public void deleteAirport( @PathVariable String airportCode) {
+		Log.info("Delete Airport Accessed");
 		System.err.println("airport controller"+ airportCode);
 		 service.deleteAirport(airportCode);
 		 
@@ -64,6 +68,7 @@ public class AirportController {
 	
 	@GetMapping("/airportname/{airportName}")
 	public Airport getAirportByName(@PathVariable String airportName) {
+		Log.info("View Airport By Name Accessed");
 		return service.getAirportByName(airportName);
 		
 	}
