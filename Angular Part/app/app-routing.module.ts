@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {path:'add-airport', component:AddAirportComponent},
   {path:"view-airportlist", component:ViewAirportlistComponent},
-  {path:"view-airport/airportcode/:airportCode",component:ViewAirportComponent},
+  {path:"view-airport/:airportCode",component:ViewAirportComponent},
   {path:"home", component:HomeComponent}
   ];
 

@@ -3,8 +3,3 @@ export class Airport{
     airportCode:string;
     airportLocation:string
 }
-export class AirportList{
-
-    airportList : Airport[];
-
-}

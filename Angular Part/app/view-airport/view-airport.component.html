@@ -1,10 +1,19 @@
 <div class="row" style="margin-bottom: 100px;">
     <div class="col-sm-4"></div>
-    <div class="col-sm-4" *ngIf="airport" class="airport-details">
-        <h2>Airport Information</h2>
-        <h3>Airport Name:{{airport.airportName}}</h3>
-        <h3>Airport Code:{{airport.airportCode}}</h3>
-        <h3>Airport Location:{{airport.airportLocation}}</h3>
+    <div class="col-sm-4" *ngIf="airport">
+
+        <table>
+            <tr style="font-size: 24px;color: green;">
+                <th>Airport Name</th>
+                <th>Airport Code</th>
+                <th>Airport Location</th>
+            </tr>
+            <tr>
+                <td>{{airport.airportName}}</td>
+                <td>{{airport.airportCode}}</td>
+                <td>{{airport.airportLocation}}</td>
+            </tr>
+        </table>
     </div>
     <div class="col-sm-4"></div>
 </div>

@@ -2,13 +2,14 @@ package com.capg.fms.airport.service;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
+
 import com.capg.fms.airport.model.Airport;
-import com.capg.fms.airport.model.AirportList;
 
 public interface IAirportService {
 	
-	AirportList getAllAirports();
-	Airport getAirportByCode(String airportCode);
+	List<Airport> getAllAirports();
+	ResponseEntity<Airport> getAirportByCode(String airportCode);
 	Airport addAirport(Airport airport);
 	void deleteAirport(String airportCode);
 	public Airport getAirportByName(String airportName);

@@ -1,4 +1,4 @@
-    <div>
+    <div align=center>
         <h2>List of Airports</h2>
         <table class="table">
 
@@ -8,10 +8,9 @@
                 <th>Airport Location</th>
             </tr>
             <tr *ngFor="let airport of airports">
-                <td>1.{{airport.airportName}}</td>
-                <td>2.{{airport.airportCode}}</td>
-                <td>3.{{airport.airportLocation}}</td>
-                <td><button class="btn btn-danger" (click)="deleteAirport(airport)"> Delete Airport</button></td>
+                <td>{{airport.airportName}}</td>
+                <td>{{airport.airportCode}}</td>
+                <td>{{airport.airportLocation}}</td>
             </tr>
 
         </table>

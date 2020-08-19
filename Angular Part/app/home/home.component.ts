@@ -18,4 +18,7 @@ export class HomeComponent implements OnInit {
   viewAirportList(){
     this.router.navigate(['/view-airportlist'])
   }
+  viewAirport(){
+    this.router.navigate(['view-airport'])
+  }
 }
