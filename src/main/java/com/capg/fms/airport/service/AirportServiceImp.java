@@ -28,17 +28,6 @@ public class AirportServiceImp implements IAirportService {
 		return airportRepo.findAll();
 	}
 
-	/*
-	 * @Override
-	 * 
-	 * @Transactional public Airport getAirportByCode(String airportCode) {
-	 * 
-	 * if(!airportRepo.existsById(airportCode)) { System.out.println(airportCode);
-	 * throw new
-	 * AirportNotFoundException("Airport with code : ["+airportCode+"] Not Found");
-	 * } return airportRepo.getOne(airportCode); }
-	 */
-
 	@Override
 	@Transactional
 	public ResponseEntity<Airport> getAirportByCode(@PathVariable("airportCode") String airportCode1) {
@@ -64,7 +53,7 @@ public class AirportServiceImp implements IAirportService {
 	@Transactional
 	public void deleteAirport(String airportCode) {
 
-		System.err.println("airport " + airportCode);
+		//System.err.println("airport " + airportCode);
 
 		if (!airportRepo.existsById(airportCode)) {
 			throw new AirportNotFoundException("Airport with code : [" + airportCode + "] Not Found");
@@ -72,6 +61,7 @@ public class AirportServiceImp implements IAirportService {
 		airportRepo.deleteById(airportCode);
 	}
 
+	@Override
 	public Airport getAirportByName(String airportName) {
 
 		return airportRepo.findByAirportName(airportName);

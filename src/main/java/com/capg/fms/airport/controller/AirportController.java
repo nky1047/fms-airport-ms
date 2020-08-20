@@ -39,7 +39,7 @@ public class AirportController {
 
 	
 	@RequestMapping("/view/{airportCode}")
-	public ResponseEntity<?> getAirportByCode( @PathVariable("airportCode") String airportCode1) {
+	public ResponseEntity<Airport> getAirportByCode( @PathVariable("airportCode") String airportCode1) {
 		Log.info("View Airport By Code Accessed");
 		return service.getAirportByCode(airportCode1);
 	}
@@ -54,7 +54,7 @@ public class AirportController {
 	@DeleteMapping("/delete/{airportCode}")
 	public void deleteAirport( @PathVariable String airportCode) {
 		Log.info("Delete Airport Accessed");
-		System.err.println("airport controller"+ airportCode);
+		//System.err.println("airport controller"+ airportCode);
 		 service.deleteAirport(airportCode);
 		 
 	}
