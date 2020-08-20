@@ -16,9 +16,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.capg.fms.airport.model.Airport;
 import com.capg.fms.airport.service.IAirportService;
+
+//Author                : Capgemini
+//Created/Modified Date : 20/08/2020
+//Description           : AirportController class for Airport Management System 
 
 @RestController
 @RequestMapping("/airport")
@@ -48,27 +51,24 @@ public class AirportController {
 	public ResponseEntity<Airport> addAirport( @RequestBody Airport airport) {
 		Log.info("Add Airport Accessed");
 		service.addAirport(airport);
-		return new ResponseEntity<Airport>(airport,HttpStatus.CREATED);
+		return new ResponseEntity<>(airport,HttpStatus.CREATED);
 	}
 
 	@DeleteMapping("/delete/{airportCode}")
 	public void deleteAirport( @PathVariable String airportCode) {
 		Log.info("Delete Airport Accessed");
-		//System.err.println("airport controller"+ airportCode);
 		 service.deleteAirport(airportCode);
-		 
-	}
-	
-	@ExceptionHandler(Exception.class)
-	public String inValid(Exception e) {
-		return e.getMessage();
 	}
 	
 	@GetMapping("/airportname/{airportName}")
 	public Airport getAirportByName(@PathVariable String airportName) {
 		Log.info("View Airport By Name Accessed");
 		return service.getAirportByName(airportName);
-		
+	}
+
+	@ExceptionHandler(Exception.class)
+	public String inValid(Exception e) {
+		return e.getMessage();
 	}
 	
 }

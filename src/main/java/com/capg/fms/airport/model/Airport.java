@@ -5,6 +5,8 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+//Author                : Capgemini
+//Created/Modified Date : 20/08/2020
 //Description           : Airport Bean class for Airport Management System 
 @Entity
 public class Airport {

@@ -11,11 +11,15 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 
+//Author                : Capgemini
+//Created/Modified Date : 20/08/2020
+//Description			: Main Application
+
 @SpringBootApplication
 //@EnableEurekaClient
 @EnableSwagger2
 public class FmsAirportMsApplication {
-
+	
 	@Bean
 	public Docket productApi() {
 		return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.basePackage("")).build();
