@@ -13,7 +13,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 //@EnableEurekaClient
-//@EnableSwagger2
+@EnableSwagger2
 public class FmsAirportMsApplication {
 
 	@Bean
