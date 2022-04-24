@@ -1,6 +1,9 @@
 package com.capg.fms.airport.controller;
 
 import java.util.List;
+import java.util.Optional;
+
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,11 +16,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.capg.fms.airport.model.Airport;
-import com.capg.fms.airport.service.IAirportService;
+import com.capg.fms.airport.service.AirportService;
+import com.capg.fms.airport.exception.AirportNotFoundException;
 
 //Author                : Capgemini
 //Created/Modified Date : 20/08/2020
@@ -31,7 +36,8 @@ public class AirportController {
 	private static final Logger Log = LoggerFactory.getLogger(AirportController.class);
 	
 	@Autowired
-	IAirportService service;
+	AirportService service;
+	
 
 	
 	@GetMapping("/all")
@@ -59,6 +65,11 @@ public class AirportController {
 		Log.info("Delete Airport Accessed");
 		 service.deleteAirport(airportCode);
 	}
+	@PutMapping("/update/")
+	public ResponseEntity<Airport> updateAppointment(@Valid @RequestBody Airport airport) {
+		return service.updateAirport(airport);
+    }
+	
 	
 	@GetMapping("/airportname/{airportName}")
 	public Airport getAirportByName(@PathVariable String airportName) {

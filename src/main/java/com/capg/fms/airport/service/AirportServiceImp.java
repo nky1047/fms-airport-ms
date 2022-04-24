@@ -4,11 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import com.capg.fms.airport.controller.AirportRepository;
 import com.capg.fms.airport.exception.AirportAlreadyExistsException;
 import com.capg.fms.airport.exception.AirportNotFoundException;
 
@@ -18,7 +21,7 @@ import com.capg.fms.airport.model.Airport;
 import com.capg.fms.airport.repository.IAirportRepo;
 
 @Service
-public class AirportServiceImp implements IAirportService {
+public class AirportServiceImp implements AirportService {
 
 	@Autowired(required = true)
 	IAirportRepo airportRepo;
@@ -59,6 +62,24 @@ public class AirportServiceImp implements IAirportService {
 		}
 		return airportRepo.save(airport);
 	}
+	
+//	Function Name   : updateAirport
+	@Transactional
+	public ResponseEntity<Airport> updateAirport(@Valid @RequestBody Airport airport){
+		Optional<Airport> findById = airportRepo.findById(airport.getAirportCode());
+		try {
+			if(findById.isPresent()) {
+				airportRepo.save(airport);
+				return new ResponseEntity<Airport>(airport , HttpStatus.OK);
+			}else {
+				throw new AirportNotFoundException("Sorry, Airport with provided code not in Database!!");
+			}
+		} catch (AirportNotFoundException e) {
+			return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
+		}
+	}
+		
+	
 	//	Function Name   : deleteAirport
 	//	Input Parameters: String airportCode
 	//  ReturnType      : None
@@ -79,5 +100,6 @@ public class AirportServiceImp implements IAirportService {
 	public Airport getAirportByName(String airportName) {
 		return airportRepo.findByAirportName(airportName);
 	}
+	
 
 }

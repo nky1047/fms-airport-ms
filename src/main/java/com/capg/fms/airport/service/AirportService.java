@@ -10,12 +10,13 @@ import com.capg.fms.airport.model.Airport;
 //Created/Modified Date : 20/08/2020
 //Description           : AirportServiceImp class implements services for Airport management System
 
-public interface IAirportService {
+public interface AirportService {
 
 	List<Airport> getAllAirports();
 	ResponseEntity<Airport> getAirportByCode(String airportCode);
 	Airport addAirport(Airport airport);
 	void deleteAirport(String airportCode);
+	ResponseEntity<Airport> updateAirport(Airport airport);
 	public Airport getAirportByName(String airportName);
 	
 }
